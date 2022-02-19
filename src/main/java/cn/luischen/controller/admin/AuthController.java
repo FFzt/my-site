@@ -14,9 +14,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +33,6 @@ import java.io.IOException;
 @RequestMapping(value = "/admin")
 public class AuthController extends BaseController{
 
-    private static final Logger LOGGER = LogManager.getLogger(AuthController.class);
 
     @Autowired
     private UserService userService;
@@ -77,7 +73,6 @@ public class AuthController extends BaseController{
             }
             logService.addLog(LogActions.LOGIN.getAction(), null, request.getRemoteAddr(), userInfo.getUid());
         } catch (Exception e) {
-            LOGGER.error(e.getMessage());
             error_count = null == error_count ? 1 : error_count + 1;
             if (error_count > 3) {
                 return APIResponse.fail("您输入密码已经错误超过3次，请10分钟后尝试");
@@ -87,7 +82,6 @@ public class AuthController extends BaseController{
             if (e instanceof BusinessException) {
                 msg = e.getMessage();
             } else {
-                LOGGER.error(msg, e);
             }
             return APIResponse.fail(msg);
         }
@@ -113,8 +107,6 @@ public class AuthController extends BaseController{
         try {
             response.sendRedirect("/admin/login");
         } catch (IOException e) {
-            e.printStackTrace();
-            LOGGER.error("注销失败", e);
         }
     }
 

@@ -21,12 +21,11 @@
           <div class="timer">
             我们已相识: <b id="d1"></b> 天 <b id="h1"></b> 时 <b id="m1"></b> 分 <b id="s1"></b> 秒
           </div>
-
           <div class="timer">
             我们已在一起: <b id="d2"></b> 天 <b id="h2"></b> 时 <b id="m2"></b> 分 <b id="s2"></b> 秒
           </div>
         </header>
-        <p>一年365天，我只爱你三天，昨天、今天、明天</p>
+        <label>一年365天，我只爱你三天，昨天、今天、明天</label>
       </article>
     </section>
     <th:block th:each="archive,archiveStat : ${archives.list}">
@@ -132,6 +131,7 @@
   timer();
   setInterval(timer, 1000);
 </script>
+
 
 </body>
 </html>

@@ -425,7 +425,8 @@ public class Commons {
                 // //匹配src
                 Matcher m = Pattern.compile("src\\s*=\\s*\'?\"?(.*?)(\'|\"|>|\\s+)").matcher(img);
                 if (m.find()) {
-                    return m.group(1);
+                    System.out.println(m.group(1));
+                    return "http://" + m.group(1);
                 }
             }
         }
