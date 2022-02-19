@@ -3,21 +3,9 @@
 <footer role="footer">
 
     <!-- logo -->
-
-    <h1> <a th:href="@{/}" title="avana LLC"><img th:src="@{https://cdn.jsdelivr.net/gh/WinterChenS/imgrpo/blog/20210816112027.png}" style="width: 66px;" title="Luis" alt="Luis"/></a> </h1>
-
-
     <!-- logo -->
 
     <!-- nav -->
-
-    <nav role="footer-nav">
-        <ul>
-            <li><a th:href="@{/}" title="Work">Work</a></li>
-            <li><a th:href="@{/about}" title="About">About</a></li>
-            <li><a th:href="@{/blog/index}" title="Blog">Blog</a></li>
-        </ul>
-    </nav>
 
     <!-- nav -->
 
@@ -50,7 +38,7 @@
             </th:block>
         </th:block>
     </ul>
-    <p class="copy-right">&copy; 2018 <th:block th:text="${title}"></th:block></p>
+    <p class="copy-right">&copy; 2022 <th:block th:text="${title}"></th:block></p>
     <th:block th:if="${record != null and record != ''}"><a class="copy-right" th:href="@{http://www.miitbeian.gov.cn/}" th:text="${record}"></a></th:block>
 </footer>
 

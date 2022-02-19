@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8001
 
 
 spring:
@@ -12,9 +12,9 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://127.0.0.1:3306/lu_tale?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          username: root
-          password: mac123
+          url: jdbc:mysql://192.168.123.222:3306/learn?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+          username: pi
+          password: zhangtao
           #配置初始化大小/最小/最大
           initial-size: 1
           min-idle: 1
@@ -63,14 +63,14 @@ pagehelper:
 
 logging:
   level:
-    cn.luischen.dao : DEBUG
+    cn.luischen.dao : INFO
 
 swagger:
   show: true
 
 qiniu:
-  accesskey: ""
-  serectkey: ""
-  bucket: ""
+  accesskey: "utc_okhvcq6Ec0clflqyU5E4zDKDrlZgMoaCxfrU"
+  serectkey: "LMsYvDRAkAqG2WojGa-g8EMAQMtqfLW0mzZuFq4U"
+  bucket: "zhangtaohxy2"
   cdn:
-    url: ""
+    url: "r7jzghcu4.hd-bkt.clouddn.com"

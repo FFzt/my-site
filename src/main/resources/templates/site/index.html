@@ -18,9 +18,15 @@
     <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
       <article role="pge-title-content">
         <header>
-          <h2><span>Luis</span> A Java Developer.</h2>
+          <div class="timer">
+            我们已相识: <b id="d1"></b> 天 <b id="h1"></b> 时 <b id="m1"></b> 分 <b id="s1"></b> 秒
+          </div>
+
+          <div class="timer">
+            我们已在一起: <b id="d2"></b> 天 <b id="h2"></b> 时 <b id="m2"></b> 分 <b id="s2"></b> 秒
+          </div>
         </header>
-        <p>maker of things for the web app, always focused on elegant simplicity, relentlessly learning by making mistakes.</p>
+        <p>一年365天，我只爱你三天，昨天、今天、明天</p>
       </article>
     </section>
     <th:block th:each="archive,archiveStat : ${archives.list}">
@@ -80,6 +86,52 @@
 
 <!-- footer -->
 <div th:replace="site/footer::footer(${commons.site_title()},${commons.site_record()},${commons.site_url()})"></div>
+
+<script>
+  function timer() {
+    var date1 = '2021/12/24 21:21:21';  //开始时间
+    var date2 = '2022/01/24 14:29:00';  //开始时间
+    var date3 = new Date(); //结束时间
+    var t1 = date3.getTime() - new Date(date1).getTime();
+    var t2 = date3.getTime() - new Date(date2).getTime();
+    var h1 = ~~(t1 / 1000 / 60 / 60 % 24);
+    if (h1 < 10) {
+      h1 = "0" + h1;
+    }
+    var m1 = ~~(t1 / 1000 / 60 % 60);
+    if (m1 < 10) {
+      m1 = "0" + m1;
+    }
+    var s1 = ~~(t1 / 1000 % 60);
+    if (s1 < 10) {
+      s1 = "0" + s1;
+    }
+    document.getElementById('d1').innerHTML = ~~(t1 / 1000 / 60 / 60 / 24);
+    document.getElementById('h1').innerHTML = h1;
+    document.getElementById('m1').innerHTML = m1;
+    document.getElementById('s1').innerHTML = s1;
+
+    var h2 = ~~(t2 / 1000 / 60 / 60 % 24);
+    if (h2 < 10) {
+      h2 = "0" + h2;
+    }
+    var m2 = ~~(t2 / 1000 / 60 % 60);
+    if (m2 < 10) {
+      m2 = "0" + m2;
+    }
+    var s2 = ~~(t2 / 1000 % 60);
+    if (s2 < 10) {
+      s2 = "0" + s2;
+    }
+    document.getElementById('d2').innerHTML = ~~(t2 / 1000 / 60 / 60 / 24);
+    document.getElementById('h2').innerHTML = h2;
+    document.getElementById('m2').innerHTML = m2;
+    document.getElementById('s2').innerHTML = s2;
+  }
+
+  timer();
+  setInterval(timer, 1000);
+</script>
 
 </body>
 </html>
