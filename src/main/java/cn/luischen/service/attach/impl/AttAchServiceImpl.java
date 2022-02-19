@@ -74,9 +74,8 @@ public class AttAchServiceImpl implements AttAchService {
     public PageInfo<AttAchDto> getAtts(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<AttAchDto> atts = attAchDao.getAtts();
+        atts.forEach(att->att.setFkey("http://"+att.getFkey()));
         PageInfo<AttAchDto> pageInfo = new PageInfo<>(atts);
         return pageInfo;
     }
-
-
 }
