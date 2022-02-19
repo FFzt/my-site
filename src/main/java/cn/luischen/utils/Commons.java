@@ -453,7 +453,7 @@ public class Commons {
                     Matcher m = Pattern.compile("src\\s*=\\s*\'?\"?(.*?)(\'|\"|>|\\s+)").matcher(data);
                     while (m.find()){
 				 //  if (m.find()) {
-                        rs.add(m.group(1));
+                        rs.add("http://" + m.group(1));
                     }
                 }
 
