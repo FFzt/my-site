@@ -14,6 +14,10 @@
     <springProperty scope="context" name="SERVER_PORT" source="server.port"/>
     <springProperty scope="context" name="LOG_NAME" source="spring.application.name"/>
 
+    <property name="log.base" value="./logs"/>
+    <property name="log.infoFile" value="${log.base}/info"/>
+    <property name="log.errorFile" value="${log.base}/error"/>
+
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
@@ -39,16 +43,17 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
         </filter>
+        <File>${log.infoFile}/info.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>/tmp/logs/${LOG_NAME}/info/logback.info.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${log.infoFile}/info.log.%d{yyyy-MM-dd-HH}.%i</fileNamePattern>
             <!--            <maxFileSize>100MB</maxFileSize>&lt;!&ndash;单个日志文件最大100M，到了这个值，就会再创建一个日志文件，日志文件的名字最后+1&ndash;&gt;-->
             <maxHistory>30</maxHistory><!--保存最近30天的日志-->
             <maxFileSize>50MB</maxFileSize><!--单个文件的最大大小-->
             <totalSizeCap>20GB</totalSizeCap><!--所有的日志文件最大20G，超过就会删除旧的日志-->
         </rollingPolicy>
         <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss:SSS} [%t] %-5level [%logger{0} ] %X{InterfaceTag} %X{transactionId} %X{ServerId} %X{Protocol} %X{LogType} - %msg%n</pattern>
             <charset>UTF-8</charset>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{36} : %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -58,16 +63,17 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>error</level>
         </filter>
+        <File>${log.errorFile}/error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>/tmp/logs/${LOG_NAME}/error/logback.error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${log.errorFile}/error.log.%d{yyyy-MM-dd-HH}.%i</fileNamePattern>
             <!--            <maxFileSize>100MB</maxFileSize>&lt;!&ndash;单个日志文件最大100M，到了这个值，就会再创建一个日志文件，日志文件的名字最后+1&ndash;&gt;-->
             <maxHistory>30</maxHistory><!--保存最近30天的日志-->
             <maxFileSize>50MB</maxFileSize><!--单个文件的最大大小-->
             <totalSizeCap>20GB</totalSizeCap><!--所有的日志文件最大20G，超过就会删除旧的日志-->
         </rollingPolicy>
         <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss:SSS} [%t] %-5level [%logger{0} ] %X{InterfaceTag} %X{transactionId} %X{ServerId} %X{Protocol} %X{LogType} - %msg%n</pattern>
             <charset>UTF-8</charset>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{36} : %msg%n</pattern>
         </encoder>
     </appender>
 
