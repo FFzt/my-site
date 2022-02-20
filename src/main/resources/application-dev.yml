@@ -73,4 +73,4 @@ qiniu:
   serectkey: "LMsYvDRAkAqG2WojGa-g8EMAQMtqfLW0mzZuFq4U"
   bucket: "zhangtaohxy2"
   cdn:
-    url: "r7jzghcu4.hd-bkt.clouddn.com"
+    url: "blog.zhangtao.xiongxiao.me"
