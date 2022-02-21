@@ -425,7 +425,7 @@ public class HomeController extends BaseController{
 
     @ApiOperation("作品主页")
     @GetMapping(value = {"", "/index"})
-    public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+    public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "9999") int limit) {
         return this.index(1, limit, request);
     }
 
